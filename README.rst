@@ -25,6 +25,9 @@ Install with:
 
    $ pip install howmuchtime
 
+*If hmt is not installed as a script, try re-installing with* ``sudo pip install howmuchtime``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Usage
 -----
 

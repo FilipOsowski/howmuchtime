@@ -16,6 +16,7 @@ Install with:
 ```
 $ pip install howmuchtime
 ```
+#### _If hmt is not installed as a script, try re-installing with_ ``sudo pip install howmuchtime``
 ## Usage
 Add a date to countdown to with:
 ```
