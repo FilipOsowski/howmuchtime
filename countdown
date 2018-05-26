@@ -1,16 +1,21 @@
-#!/usr/bin/env python3
 import argparse
 
+# Parses user's arguments and calls functions accordingly.
 def main(args):
     import datetime
     import os
 
+    # Since dates are stored in "YYYY-MM-DD" format, this function takes such a
+    # string and turns in into and instance of datetime.date.
     def make_datetime_date(date_string):
         date_components = [int(date_component) for date_component in date_string.split("-")]
         date = datetime.date(date_components[0], date_components[1], date_components[2])
         return date
 
+    # Adds or removes a date from/to the date_list.
     def modify_dates(command, date):
+
+        # Basic check to make sure the user's date can be used.
         try:
             date = make_datetime_date(date)
         except (ValueError, IndexError):
@@ -21,10 +26,15 @@ def main(args):
                     print("Date added.")
 
             else:
+
+                # Check to make sure the date specified is in the date_list.
                 try:
                     dates.remove(date.isoformat() + "\n")
                 except ValueError:
                     print("Date not found.")
+
+                # After a date is removed, date_list is rewritten using the
+                # dates array.
                 else:
                     date_list.seek(0)
                     date_list.truncate()
@@ -35,15 +45,22 @@ def main(args):
     def countdown():
         today = datetime.date.today()
 
+        # The time remaining between today and each stored date is calculated
+        # and outputted.
         for date in dates:
             time_remaining = make_datetime_date(date) - today
             if time_remaining == abs(time_remaining):
                 print(date[:-1] + ": " + str(time_remaining.days) + " days (" + str(time_remaining.days * 24) + " hours) remaining.")
+
+            # If a date has passed, the user is notified of its removal.
             else:
                 print(date[:-1] + " has passed.", end=' ')
                 modify_dates("r", date[:-1])
 
     my_loc = os.path.dirname(os.path.abspath(__file__))
+
+    # The date_list is opened and its contents are stored in the dates array
+    # for accessibility.
     with open(os.path.join(my_loc, "date_list"), "a+") as date_list:
         date_list.seek(0)
         dates = [date for date in date_list]
