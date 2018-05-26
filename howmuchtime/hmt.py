@@ -2,6 +2,7 @@
 def main(args):
     import datetime
     import os
+    import pathlib
 
     # Since dates are stored in "YYYY-MM-DD" format, this function takes such a
     # string and turns in into and instance of datetime.date.
@@ -62,11 +63,12 @@ def main(args):
         else:
             print("No dates tracked. Get help with 'hmt -h'")
 
-    my_loc = os.path.dirname(os.path.abspath(__file__))
+    # my_loc = os.path.dirname(os.path.abspath(__file__))
+    home_dir = pathlib.Path.home()
 
     # The date_list is opened and its contents are stored in the dates array
     # for accessibility.
-    with open(os.path.join(my_loc, "date_list"), "a+") as date_list:
+    with open(os.path.join(home_dir, ".date_list"), "a+") as date_list:
         date_list.seek(0)
         dates = [date for date in date_list]
         for key, value in args.items():

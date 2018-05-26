@@ -8,7 +8,7 @@ with open(path.join(my_loc, "README.rst"), "r") as readme:
 
 setup(
         name="howmuchtime",
-        version="0.1.2",
+        version="0.1.5",
         license="MIT",
         packages=find_packages(),
         python_requires="~=3.0",
@@ -17,13 +17,14 @@ setup(
         author="Filip Osowski",
         author_email="filiposowski5@gmail.com",
         url="https://github.com/FilipOsowski/howmuchtime",
-        classifiers=[
-            "Development Status :: 3 - Alpha",
-            "Programming Language :: Python :: 3",
-        ],
+        include_package_data=True,
         entry_points={
             "console_scripts": [
                 "hmt = howmuchtime.hmt:cli"
             ]
         },
+        classifiers=[
+            "Development Status :: 3 - Alpha",
+            "Programming Language :: Python :: 3",
+        ],
 )
