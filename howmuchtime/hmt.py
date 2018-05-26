@@ -7,8 +7,11 @@ def main(args):
     # Since dates are stored in "YYYY-MM-DD" format, this function takes such a
     # string and turns in into and instance of datetime.date.
     def make_datetime_date(date_string):
-        date_components = [int(date_component) for date_component in date_string.split("-")]
-        date = datetime.date(date_components[0], date_components[1], date_components[2])
+        date_components = [
+            int(date_component) for date_component in date_string.split("-")
+        ]
+        date = datetime.date(date_components[0], date_components[1],
+                             date_components[2])
         return date
 
     # Adds or removes a date from/to the date_list.
@@ -21,8 +24,8 @@ def main(args):
             print("Incorrect date format.")
         else:
             if command == "a":
-                    date_list.write(date.isoformat() + "\n")
-                    print("Date added.")
+                date_list.write(date.isoformat() + "\n")
+                print("Date added.")
 
             else:
 
@@ -41,7 +44,7 @@ def main(args):
                         date_list.write(remaining_date)
                     print("Date removed.")
 
-    def countdown():
+    def howmuchtime():
         if len(dates) > 0:
             today = datetime.date.today()
             expired_dates = []
@@ -51,7 +54,9 @@ def main(args):
             for date in dates:
                 time_remaining = make_datetime_date(date) - today
                 if time_remaining == abs(time_remaining):
-                    print(date[:-1] + ": " + str(time_remaining.days) + " days (" + str(time_remaining.days * 24) + " hours) remaining.")
+                    print(
+                        date[:-1] + ": " + str(time_remaining.days) + " days ("
+                        + str(time_remaining.days * 24) + " hours) remaining.")
 
                 # If a date has passed, the user is notified of its removal.
                 else:
@@ -64,7 +69,7 @@ def main(args):
             print("No dates tracked. Get help with 'hmt -h'")
 
     # my_loc = os.path.dirname(os.path.abspath(__file__))
-    home_dir = pathlib.Path.home()
+    home_dir = str(pathlib.Path.home())
 
     # The date_list is opened and its contents are stored in the dates array
     # for accessibility.
@@ -76,16 +81,20 @@ def main(args):
                 modify_date_list(key, value)
                 break
         else:
-            countdown()
+            howmuchtime()
 
-            
+
 def cli():
     import argparse
 
     cli = argparse.ArgumentParser(description="Countdown to a date.")
     date_commands = cli.add_mutually_exclusive_group()
-    date_commands.add_argument("-a", metavar="date", help="Add date in YYYY-MM-DD formate for counting down to.")
-    date_commands.add_argument("-r", metavar="date", help="Removed a currently tracked date.")
+    date_commands.add_argument(
+        "-a",
+        metavar="date",
+        help="Add date in YYYY-MM-DD formate for counting down to.")
+    date_commands.add_argument(
+        "-r", metavar="date", help="Removed a currently tracked date.")
 
     args = cli.parse_args()
     main(vars(args))
