@@ -23,7 +23,7 @@ setup(
         ],
         entry_points={
             "console_scripts": [
-                "hmt = hmt:cli"
+                "hmt = howmuchtime.hmt:cli"
             ]
         },
 )
