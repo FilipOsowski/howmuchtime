@@ -21,7 +21,7 @@ def main(args):
         try:
             date = make_datetime_date(date)
         except (ValueError, IndexError):
-            print("Incorrect date format.")
+            print("Incorrect date format. Please use YYYY-MM-DD.")
         else:
             if command == "a":
                 date_list.write(date.isoformat() + "\n")

@@ -8,7 +8,7 @@ with open(path.join(my_loc, "README.rst"), "r") as readme:
 
 setup(
         name="howmuchtime",
-        version="0.1.7",
+        version="0.1.9",
         license="MIT",
         packages=find_packages(),
         python_requires="~=3.0",
