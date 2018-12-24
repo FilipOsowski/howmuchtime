@@ -11,10 +11,10 @@ For example:
 
 ::
 
-   $ hmt -a 2018-09-20
+   $ hmt -a 2018-09-20 Birthday
    Date added.
    $ hmt
-   2018-09-20: 118 days (2832 hours) remaining.
+   Birthday 2018-09-20: 118 days (2832 hours) remaining.
 
 Installation
 ------------
@@ -35,13 +35,15 @@ Add a date to countdown to with:
 
 ::
 
-   $ hmt -a <YYYY-MM-DD>
+   $ hmt -a <YYYY-MM-DD> <optional name>
 
 If you no longer want the countdown to a date, remove it with:
 
 ::
 
    $ hmt -r <YYYY-MM-DD>
+   $ # or using a name
+   $ hmt -r <name>
 
 Finally, to view the countdown, just call hmt:
 
@@ -53,12 +55,16 @@ Additional Help
 ---------------
 
 ::
+    usage: hmt [-a date [name] | -r date/name | -h]
 
-   usage: hmt [-h] [-a date | -r date]
+    Countdown to a date.
 
-   Countdown to a date.
+    optional arguments:
+      -a date [name], --add-date date [name]
+                            Add date in YYYY-MM-DD format (with an optional name)
+                            for counting down to
+      -r date/name, --remove-date date/name
+                            Remove a currently tracked date by specifying the date
+                            or its name
+      -h, --help            Show this help message and exit
 
-   optional arguments:
-     -h, --help  show this help message and exit
-     -a date     Add date in YYYY-MM-DD formate for counting down to.
-     -r date     Removed a currently tracked date.
